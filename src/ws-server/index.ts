@@ -1,18 +1,17 @@
+import fs from 'fs';
 import { WebSocketServer } from 'ws';
+
 import {
   mouse,
   left,
   right,
   up,
   down,
-  getActiveWindow,
-  centerOf,
-  randomPointIn,
-  sleep,
-  Point,
-  straightTo,
+  screen,
   Region,
+  FileType,
 } from '@nut-tree/nut-js';
+
 import { drawCommands } from './draw-commands/index.js';
 
 const PORT = 8080;
@@ -38,6 +37,27 @@ export const startWS = (): void => {
           await drawCommands.draw_circle(position, pixels);
 
           ws.send(command[0]);
+          break;
+
+        case 'prnt_scrn':
+          const x = position.x - 100;
+          const y = position.y - 100;
+          const region = new Region(x, y, 200, 200);
+          const pathToImg = await screen.captureRegion(
+            'image',
+            region,
+            FileType.PNG,
+          );
+
+          fs.readFile(pathToImg, (err, data) => {
+            if (err) {
+              throw err;
+            }
+            const base64ImageStr = Buffer.from(data).toString('base64');
+
+            ws.send(`prnt_scrn ${base64ImageStr}`);
+          });
+
           break;
 
         case 'mouse_position':
