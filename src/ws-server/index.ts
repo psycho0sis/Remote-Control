@@ -13,10 +13,13 @@ import {
   straightTo,
   Region,
 } from '@nut-tree/nut-js';
+import { drawCommands } from './draw-commands/index.js';
+
+const PORT = 8080;
 
 export const startWS = (): void => {
   const wsServer: WebSocketServer = new WebSocketServer({
-    port: 8080,
+    port: PORT,
   });
 
   wsServer.on('connection', ws => {
@@ -31,6 +34,12 @@ export const startWS = (): void => {
       const position = await mouse.getPosition();
 
       switch (command[0]) {
+        case 'draw_circle':
+          await drawCommands.draw_circle(position, pixels);
+
+          ws.send(command[0]);
+          break;
+
         case 'mouse_position':
           ws.send(`mouse_position ${position.x},${position.y}`);
           break;
