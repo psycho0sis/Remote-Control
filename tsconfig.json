@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+      "target": "es2018",
+      "module": "esnext",
+      "lib": ["es6"],
+      "allowJs": true,
+      "skipLibCheck": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitAny": true,
+      "sourceMap": false,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "rootDir": "./src",
+      "outDir": "./dist",
+      "baseUrl": "./src"
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"],
+    "ts-node": {"esm": true}
+  }
