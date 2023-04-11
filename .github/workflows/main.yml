@@ -18,8 +18,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Identity
         run: |
-           git config --global user.email "ilonakot92@gmail.com"
-           git config --global user.name "Ilona"
+           git config --global user.email github-actions[bot]
+           git config --global user.name github-actions[bot]@users.noreply.github.com
       - name: Update version of Clever Shop!
         run: |
           npm version major
