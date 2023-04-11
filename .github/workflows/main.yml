@@ -20,7 +20,7 @@ jobs:
         run: |
            git config --global user.email github-actions[bot]
            git config --global user.name github-actions[bot]@users.noreply.github.com
-      - name: Update version of Clever Shop!
+      - name: Update version of Remote control!
         run: |
-          npm version major
+          npm version major -m "Version upgraded to "
           git push --follow-tags
