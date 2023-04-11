@@ -19,7 +19,7 @@ jobs:
       - name: Identity
         run: |
            git config --global user.email "ilonakot92@gmail.com"
-           git config --global user.name "psycho0sis"
+           git config --global user.name "Ilona"
       - name: Update version of Clever Shop!
         run: |
           npm version major
