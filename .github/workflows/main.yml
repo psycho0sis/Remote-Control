@@ -22,5 +22,5 @@ jobs:
            git config --global user.name github-actions[bot]@users.noreply.github.com
       - name: Update version of Remote control!
         run: |
-          npm version major -m "[RELEASE] %s"
+          npm version major -m "Version upgraded! It's %s version now"
           git push --follow-tags
